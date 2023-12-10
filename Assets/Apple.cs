@@ -33,12 +33,16 @@ public class Apple : MonoBehaviour
 
         source.PlayOneShot(source.clip);
 
-        Particles(2f);
+        Particles(0.5f);
     }
+
 
     void Particles(float distance)
     {
         var offset = Random.insideUnitSphere * distance;
-        Instantiate(particle, transform.position + offset, transform.rotation);
+        GameObject newParticle = Instantiate(particle, transform.position + offset, transform.rotation);
+
+        // Destroy the instantiated particle after 1.5 seconds
+        Destroy(newParticle, 1.5f);
     }
 }
